@@ -2,8 +2,143 @@
 <html>
   <head>
     <title>Consoles - CTSchmidlak.com</title>
+
+    <!--Import Font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet" />
+
+    <!--Import styles-->
+    <link rel="stylesheet" href="styles/consoles.css" />
   </head>
   <body>
-    <p>Welcome to Consoles.html!</p>
+    <!--Background-->
+    <div class="background-image"></div>
+
+    <!--Console Cards-->
+    <div class="consoles">
+      <div id="PC" class="console-card">
+        <!--Console Header-->
+        <div class="console-header">
+          <p>Microsoft <br />1981 <br />Gen. II - Present</p>
+        </div>
+
+        <!--Console Image & Button for Image Switching-->
+        <div class="console-image-container">
+          <img class="console-image" src="styles/images/consoles/pc.png" />
+        </div>
+
+        <!--Console Name & Aliases-->
+        <div class="console-name">MS-DOS &amp; Windows OS</div>
+        <div class="console-alias">aliases: Personal Computer (PC)</div>
+
+        <!--Console Release Info-->
+        <div class="console-release">
+          <div>Debut:</div>
+          <div>August 12, 1981 (MS-DOS)</div>
+          <div>/</div>
+          <div>November 20, 1985 (Windows 1.0)</div>
+          <div>/</div>
+          <div><img src="styles/images/consoles/usa.svg" /></div>
+        </div>
+
+        <!--Console Sales Info-->
+        <div class="console-sold">
+          <div>&#128200; Units sold:</div>
+          <div>Billions</div>
+          <div>/</div>
+          <div>&#128176; Launch Price:</div>
+          <div>Win 1.0 - $99 (USD)</div>
+        </div>
+
+        <!--Best Sellers Header-->
+        <div class="console-best-sellers">
+          <p>Best Selling Games</p>
+        </div>
+
+        <!--Game Cards-->
+        <div class="game-grid">
+          <div class="game-card">
+            <img src="styles/images/consoles/pubg_box.png" />
+            <div class="game-title">&#129351; PUBG: Battlegrounds</div>
+            <div class="game-sales">42 Million Copies Sold</div>
+          </div>
+          <div class="game-card">
+            <img src="styles/images/consoles/minecraft_box.png" />
+            <div class="game-title">&#129352; Minecraft</div>
+            <div class="game-sales">33 Million Copies Sold</div>
+          </div>
+          <div class="game-card">
+            <img src="styles/images/consoles/terraria_box.jpg" />
+            <div class="game-title">&#129353; Terraria</div>
+            <div class="game-sales">23 Million Copies Sold</div>
+          </div>
+        </div>
+
+        <!--Game Reviews Button-->
+        <div class="console-reviews"><button>NES Game Reviews</button></div>
+      </div>
+
+      <div id="NES" class="console-card">
+        <!--Console Header-->
+        <div class="console-header">
+          <p>Nintendo <br />1983 <br />Gen. III</p>
+        </div>
+
+        <!--Console Image & Button for Image Switching-->
+        <div class="console-image-container">
+          <img class="console-image" src="styles/images/consoles/nes.png" />
+        </div>
+
+        <!--Console Name & Aliases-->
+        <div class="console-name">Nintendo Entertainment System</div>
+        <div class="console-alias">aliases: Family Computer (Famicom) / Hyundai Comboy / Samurai Electronic TV Game System</div>
+
+        <!--Console Release Info-->
+        <div class="console-release">
+          <div>Debut:</div>
+          <div>July 15, 1983</div>
+          <div>/</div>
+          <div><img src="styles/images/consoles/japan.svg" /></div>
+        </div>
+
+        <!--Console Sales Info-->
+        <div class="console-sold">
+          <div>&#128200; Units sold:</div>
+          <div>61.9 Million</div>
+          <div>/</div>
+          <div>&#128176; Launch Price:</div>
+          <div>$179 (USD)</div>
+        </div>
+
+        <!--Best Sellers Header-->
+        <div class="console-best-sellers">
+          <p>Best Selling Games</p>
+        </div>
+
+        <!--Game Cards-->
+        <div class="game-grid">
+          <div class="game-card">
+            <img src="styles/images/consoles/smb_box.png" />
+            <div class="game-title">&#129351; Super Mario Bros.</div>
+            <div class="game-sales">40.2 Million Copies Sold</div>
+          </div>
+          <div class="game-card">
+            <img src="styles/images/consoles/duckhunt_box.jpg" />
+            <div class="game-title">&#129352; Duck Hunt</div>
+            <div class="game-sales">28.3 Million Copies Sold</div>
+          </div>
+          <div class="game-card">
+            <img src="styles/images/consoles/smb3_box.png" />
+            <div class="game-title">&#129353; Super Mario Bros. 3</div>
+            <div class="game-sales">18 Million Copies Sold</div>
+          </div>
+        </div>
+
+        <!--Game Reviews Button-->
+        <div class="console-reviews"><button>NES Game Reviews</button></div>
+      </div>
+    </div>
   </body>
 </html>

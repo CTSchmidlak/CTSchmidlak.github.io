@@ -1,0 +1,27 @@
+<svg width="96" height="72" viewBox="0 0 96 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_1062_1938)">
+<mask id="mask0_1062_1938" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="96" height="72">
+<rect width="95.9062" height="71.9297" fill="white"/>
+</mask>
+<g mask="url(#mask0_1062_1938)">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M0 0V71.9297H95.9062V0H0Z" fill="#F7FCFF"/>
+<mask id="mask1_1062_1938" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="96" height="72">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M0 0V71.9297H95.9062V0H0Z" fill="white"/>
+</mask>
+<g mask="url(#mask1_1062_1938)">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M47.9531 58.4429C60.3674 58.4429 70.4312 48.3791 70.4312 35.9648C70.4312 23.5506 60.3674 13.4868 47.9531 13.4868C35.5389 13.4868 25.4751 23.5506 25.4751 35.9648C25.4751 48.3791 35.5389 58.4429 47.9531 58.4429Z" fill="#E31D1C"/>
+</g>
+</g>
+<rect width="95.9062" height="71.9297" fill="url(#paint0_linear_1062_1938)" style="mix-blend-mode:overlay"/>
+</g>
+<rect x="1.49854" y="1.49854" width="93.0029" height="69.0029" rx="4.50146" stroke="black" stroke-opacity="0.1" stroke-width="2.99707" style="mix-blend-mode:multiply"/>
+<defs>
+<linearGradient id="paint0_linear_1062_1938" x1="47.9531" y1="0" x2="47.9531" y2="71.9297" gradientUnits="userSpaceOnUse">
+<stop stop-color="white" stop-opacity="0.7"/>
+<stop offset="1" stop-opacity="0.3"/>
+</linearGradient>
+<clipPath id="clip0_1062_1938">
+<rect width="96" height="72" rx="6" fill="white"/>
+</clipPath>
+</defs>
+</svg>
