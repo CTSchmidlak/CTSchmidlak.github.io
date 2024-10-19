@@ -13,9 +13,10 @@
         <div class="prose">
             <!-- title area -->
             <header class="text-center text-balance">
-                <h1 class="">
-                    Schmidlak's 34th Birthday 12-Hour Charity Stream
+                <h1 class="mb-0 text-3xl uppercase">
+                    Schmidlak's 34th Birthday
                 </h1>
+                <h1 class="mt-0 text-5xl">12-Hour Charity Stream</h1>
                 <h2>
                     Raising Money for the
                     <a href="https://www.alz.org/">Alzheimer's Association</a>
@@ -25,18 +26,39 @@
             <!-- top video player (twitch) -->
             <h2>Live stream</h2>
             <div id="twitch-embed" class="aspect-video"></div>
-            <p>The 12-hour stream starts on November 10 at 9am PST.</p>
+            <p>The 12-hour stream starts on November 10, 2024 at 11am PST.</p>
 
-            <!-- manual donation bar placeholder (hoping we can make live) -->
-            <h2>Donation progress</h2>
+            <!-- stream progress -->
+            <h2>Stream progress</h2>
+            <p class="not-prose" id="time-status"></p>
             <progress
-                class="w-full bg-gray-200 h-4 mb-2"
-                value="25"
+                id="time-progress"
+                class="w-full bg-gray-200 h-4"
+                value="0"
                 max="100"
             ></progress>
+            <div class="w-full flex justify-between not-prose mb-4">
+                <p>Nov 10, '24 @ 11am PST</p>
+                <p>Nov 10, '24 @ 11pm PST</p>
+            </div>
+
+            <!-- manual donation bar -->
+            <h2>Donation progress</h2>
+            <p class="not-prose" id="dono-status"></p>
+            <progress
+                id="dono-progress"
+                class="w-full bg-gray-200 h-4"
+                value="0"
+                max="100"
+            ></progress>
+            <div class="w-full flex justify-between not-prose mb-4">
+                <p>$0</p>
+                <p>$900</p>
+            </div>
             <a
                 href="https://streamlabscharity.com/@schmidlak/2024-birthday-stream-for-alzheimers-awareness-and-research"
                 target="_blank"
+                class=""
             >
                 <button
                     class="border-black border-2 p-2 hover:bg-black hover:text-white"
@@ -55,16 +77,20 @@
             </p>
 
             <!-- alzheimer's stats video (YouTube) -->
-            <iframe
-                width="560"
-                height="315"
-                src="https://www.youtube.com/embed/Bwcsjpz_oUM?si=7cRH3ae33-fxSBhy&amp;controls=0"
-                title="YouTube video player"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin"
-                allowfullscreen
-            ></iframe>
+            <div class="my-12">
+                <iframe
+                    class="w-full aspect-video"
+                    src="https://www.youtube.com/embed/Bwcsjpz_oUM?si=7cRH3ae33-fxSBhy&amp;controls=0"
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen
+                ></iframe>
+                <p class="text-sm font-bold">
+                    Statistics about the prevalence of Alzheimer's Disease
+                </p>
+            </div>
 
             <p>
                 Nearly 7 million Americans are currently living with Alzheimer’s
@@ -78,8 +104,9 @@
                 2015, and passed away in 2022.
             </p>
 
-            <div>
+            <div class="my-12">
                 <img src="styles\images\charity\pops.jpg" />
+                <p class="text-sm font-bold -mt-4">Pops & me ('94)</p>
             </div>
 
             <p>
@@ -96,21 +123,24 @@
             </p>
 
             <!-- alzheimer's assoc. about video (YouTube) -->
-            <iframe
-                width="560"
-                height="315"
-                src="https://www.youtube.com/embed/8FRxGCXDGlY?si=YpJEGcULRCGGtgHy&amp;controls=0"
-                title="YouTube video player"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin"
-                allowfullscreen
-            ></iframe>
-
-            <p>
-                You can learn more about the Alzheimer’s Association and their
-                work at <a href="https://alz.org/about">alz.org/about</a>
-            </p>
+            <div class="my-12">
+                <iframe
+                    class="w-full aspect-video"
+                    src="https://www.youtube.com/embed/8FRxGCXDGlY?si=YpJEGcULRCGGtgHy&amp;controls=0"
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen
+                ></iframe>
+                <p class="text-sm font-bold">
+                    You can learn more about the Alzheimer’s Association and
+                    their work at
+                    <a href="https://alz.org/about" class="font-bold"
+                        >alz.org/about</a
+                    >
+                </p>
+            </div>
 
             <h2>What?</h2>
             <p>TBD.</p>
@@ -154,8 +184,9 @@
                 out!
             </p>
 
-            <h2>Debug Zone</h2>
-            <pre id="fetch-results"></pre>
+            <!-- Debug zone. Enable to dump data here to check out. -->
+            <!-- <h2>Debug Zone</h2> -->
+            <!-- <pre id="fetch-results"></pre> -->
         </div>
 
         <!-- scripts go at the end of the body for faster page rendering -->
@@ -180,14 +211,125 @@
         <!-- Here we try to reach the streamlabs API to see if we can get your
         donation goal progress manually. "module" b/c we use `await` -->
         <script type="module">
-            const url =
-                "https://streamlabscharity.com/api/v1/users/campaigns/schmidlak/2024-birthday-stream-for-alzheimers-awareness-and-research";
-            const response = await fetch(url);
-            console.log("Fetch response");
-            console.log(response);
-            const body = await response.json();
-            document.getElementById("fetch-results").textContent =
-                JSON.stringify(body, null, 4);
+            try {
+                const url =
+                    "https://streamlabscharity.com/api/v1/users/campaigns/schmidlak/2024-birthday-stream-for-alzheimers-awareness-and-research";
+                const response = await fetch(url);
+                console.log("Fetch response:", response);
+                const data = await response.json();
+                // debug view in debug zone
+                // document.getElementById("fetch-results").textContent =
+                //     JSON.stringify(data, null, 4);
+                const raisedCents = data["amount_raised"];
+                // const raisedCents = 10000; // uncomment to try experimental value
+                const goalCents = data["goal"]["amount"]; // should be 90000 for $900
+                const donoProgressEl = document.getElementById("dono-progress");
+                donoProgressEl.setAttribute(
+                    "value",
+                    Math.min(100, (100 * raisedCents) / goalCents).toFixed(1)
+                );
+                const donoStatusEl = document.getElementById("dono-status");
+                donoStatusEl.textContent = "$" + (raisedCents / 100).toFixed(2);
+            } catch (error) {
+                console.error(
+                    "Error fetching and setting donation progress:",
+                    error
+                );
+            }
+        </script>
+        <script type="module">
+            // 1. Fixed time Nov 10 2024 11am PST
+            const startTime = new Date("2024-11-10T11:00:00-08:00");
+            // 2. Fixed time Nov 10 2024 11pm PST (add 12 hours)
+            const endTime = new Date("2024-11-10T23:00:00-08:00");
+
+            function updateTime() {
+                // 3. Current time
+                const now = new Date();
+                const beforeStream = new Date("2024-11-10T09:00:00-08:00");
+                const duringStream = new Date("2024-11-10T13:00:00-08:00");
+                const afterStream = new Date("2024-11-10T23:30:00-08:00");
+                const currentTime = now; // pick different ones here to test
+
+                // Calculate progress (0-1)
+                const progress = Math.max(
+                    0,
+                    Math.min(
+                        1,
+                        (currentTime - startTime) / (endTime - startTime)
+                    )
+                );
+
+                // Scale to percentage (0-100)
+                const percentProgress = (progress * 100).toFixed(1);
+
+                // Boolean indicators
+                const hasntStartedYet = currentTime < startTime;
+                const hasEnded = currentTime > endTime;
+
+                // Human readable countdown string
+                let countdownString = "";
+                if (hasntStartedYet) {
+                    const diff = startTime - currentTime;
+                    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor(
+                        (diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+                    );
+                    const minutes = Math.floor(
+                        (diff % (1000 * 60 * 60)) / (1000 * 60)
+                    );
+                    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+                    const parts = [];
+                    if (days > 0) {
+                        parts.push(`${days} ${days > 1 ? "days" : "day"}`);
+                    }
+                    if (hours > 0) {
+                        parts.push(`${hours} ${hours > 1 ? "hours" : "hour"}`);
+                    }
+                    if (minutes > 0) {
+                        parts.push(
+                            `${minutes} ${minutes > 1 ? "minutes" : "minute"}`
+                        );
+                    }
+                    if (seconds > 0) {
+                        parts.push(
+                            `${seconds} ${seconds > 1 ? "seconds" : "second"}`
+                        );
+                    }
+
+                    countdownString = `Starts in ${parts.join(" ")}`;
+                    document.getElementById("time-status").textContent =
+                        countdownString;
+                }
+
+                // Current hour string (1-12)
+                if (!hasntStartedYet && !hasEnded) {
+                    let currentHourString = "";
+                    const hoursPassed = Math.ceil(progress * 12);
+                    currentHourString = `LIVE - Hour ${hoursPassed}/12`;
+                    document.getElementById("time-status").textContent =
+                        currentHourString;
+                }
+
+                if (hasEnded) {
+                    document.getElementById("time-status").textContent =
+                        "Thanks for tuning in!";
+                }
+
+                const donoEl = document.getElementById("time-progress");
+                donoEl.setAttribute("value", percentProgress);
+
+                // uncomment to debug
+                // console.log("Progress (0-1):", progress);
+                // console.log("Progress (0-100):", percentProgress);
+                // console.log("Hasn't started yet:", hasntStartedYet);
+                // console.log("Has ended:", hasEnded);
+            }
+
+            // call it once, then every second
+            updateTime();
+            setInterval(updateTime, 1000);
         </script>
     </body>
 </html>
