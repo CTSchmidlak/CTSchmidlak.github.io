@@ -1,12 +1,140 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>CTSchmidlak.com</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.tailwindcss.com"></script>
-  </head>
+    <head>
+        <title>Schmidlak's 34th Birthday 12-Hour Charity Stream</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    </head>
 
-  <body>
-    <h1>Hello World!</h1>
-  </body>
+    <!-- body-level padding and centering the content area -->
+    <body class="p-2 flex justify-center w-full">
+        <!-- content area (prose does width limiting) -->
+        <div class="prose">
+            <!-- title area -->
+            <header class="text-center text-balance">
+                <h1 class="">
+                    Schmidlak's 34th Birthday 12-Hour Charity Stream
+                </h1>
+                <h2>
+                    Raising Money for the
+                    <a href="https://www.alz.org/">Alzheimer's Association</a>
+                </h2>
+            </header>
+
+            <!-- top video player (twitch) -->
+            <h2>Live stream</h2>
+            <div id="twitch-embed" class="aspect-video"></div>
+            <p>The 12-hour stream starts on November 10 at 9am PST.</p>
+
+            <!-- manual donation bar placeholder (hoping we can make live) -->
+            <h2>Donation progress</h2>
+            <progress
+                class="w-full bg-gray-200 h-4 mb-2"
+                value="25"
+                max="100"
+            ></progress>
+            <a
+                href="https://streamlabscharity.com/@schmidlak/2024-birthday-stream-for-alzheimers-awareness-and-research"
+                target="_blank"
+            >
+                <button
+                    class="border-black border-2 p-2 hover:bg-black hover:text-white"
+                >
+                    Donate
+                </button>
+            </a>
+
+            <h2>Why?</h2>
+            <p>
+                Lorem ipsum odor amet, consectetuer adipiscing elit. Dolor
+                sagittis inceptos euismod sapien laoreet penatibus ullamcorper
+                suscipit nisi. Nascetur et egestas efficitur faucibus luctus
+                dolor mattis. Suscipit litora felis molestie praesent; egestas
+                pharetra mollis lobortis. Fames viverra tortor blandit; lectus
+                cras nunc. Turpis fermentum tristique venenatis nam malesuada
+                aliquam urna. Lectus nibh taciti finibus egestas vel viverra
+                habitasse himenaeos accumsan. Class est et in ac hac etiam
+                suscipit platea. Tellus sagittis habitant nec nascetur
+                sollicitudin auctor erat!
+            </p>
+
+            <h2>What?</h2>
+            <p>
+                Lorem ipsum odor amet, consectetuer adipiscing elit. Dolor
+                sagittis inceptos euismod sapien laoreet penatibus ullamcorper
+                suscipit nisi. Nascetur et egestas efficitur faucibus luctus
+                dolor mattis. Suscipit litora felis molestie praesent; egestas
+                pharetra mollis lobortis. Fames viverra tortor blandit; lectus
+                cras nunc. Turpis fermentum tristique venenatis nam malesuada
+                aliquam urna. Lectus nibh taciti finibus egestas vel viverra
+                habitasse himenaeos accumsan. Class est et in ac hac etiam
+                suscipit platea. Tellus sagittis habitant nec nascetur
+                sollicitudin auctor erat!
+            </p>
+
+            <h2>When & Where?</h2>
+            <p>
+                Lorem ipsum odor amet, consectetuer adipiscing elit. Dolor
+                sagittis inceptos euismod sapien laoreet penatibus ullamcorper
+                suscipit nisi. Nascetur et egestas efficitur faucibus luctus
+                dolor mattis. Suscipit litora felis molestie praesent; egestas
+                pharetra mollis lobortis. Fames viverra tortor blandit; lectus
+                cras nunc. Turpis fermentum tristique venenatis nam malesuada
+                aliquam urna. Lectus nibh taciti finibus egestas vel viverra
+                habitasse himenaeos accumsan. Class est et in ac hac etiam
+                suscipit platea. Tellus sagittis habitant nec nascetur
+                sollicitudin auctor erat!
+            </p>
+
+            <h2>How?</h2>
+            <p>
+                Lorem ipsum odor amet, consectetuer adipiscing elit. Dolor
+                sagittis inceptos euismod sapien laoreet penatibus ullamcorper
+                suscipit nisi. Nascetur et egestas efficitur faucibus luctus
+                dolor mattis. Suscipit litora felis molestie praesent; egestas
+                pharetra mollis lobortis. Fames viverra tortor blandit; lectus
+                cras nunc. Turpis fermentum tristique venenatis nam malesuada
+                aliquam urna. Lectus nibh taciti finibus egestas vel viverra
+                habitasse himenaeos accumsan. Class est et in ac hac etiam
+                suscipit platea. Tellus sagittis habitant nec nascetur
+                sollicitudin auctor erat!
+            </p>
+
+            <h2>Debug Zone</h2>
+            <pre id="fetch-results"></pre>
+        </div>
+
+        <!-- scripts go at the end of the body for faster page rendering -->
+
+        <!-- Twitch embeds (https://dev.twitch.tv/docs/embed/everything/) -->
+        <!-- Load the Twitch embed JavaScript file -->
+        <script src="https://embed.twitch.tv/embed/v1.js"></script>
+
+        <!-- Create a Twitch.Embed object that will render within the "twitch-embed" element -->
+        <script type="text/javascript">
+            new Twitch.Embed("twitch-embed", {
+                // height and width are a bit confusing to set, but both 100%
+                // seems to work well since we set the aspect ratio on the <div>
+                // that will contain it
+                width: "100%",
+                height: "100%",
+                channel: "schmidlak",
+                layout: "video", // no chat
+            });
+        </script>
+
+        <!-- Here we try to reach the streamlabs API to see if we can get your
+        donation goal progress manually. "module" b/c we use `await` -->
+        <script type="module">
+            const url =
+                "https://streamlabscharity.com/api/v1/users/campaigns/schmidlak/2024-birthday-stream-for-alzheimers-awareness-and-research";
+            const response = await fetch(url);
+            console.log("Fetch response");
+            console.log(response);
+            const body = await response.json();
+            document.getElementById("fetch-results").textContent =
+                JSON.stringify(body, null, 4);
+        </script>
+    </body>
 </html>
