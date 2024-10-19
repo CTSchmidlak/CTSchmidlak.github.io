@@ -13,9 +13,10 @@
         <div class="prose">
             <!-- title area -->
             <header class="text-center text-balance">
-                <h1 class="">
-                    Schmidlak's 34th Birthday 12-Hour Charity Stream
+                <h1 class="mb-0 text-3xl uppercase">
+                    Schmidlak's 34th Birthday
                 </h1>
+                <h1 class="mt-0 text-5xl">12-Hour Charity Stream</h1>
                 <h2>
                     Raising Money for the
                     <a href="https://www.alz.org/">Alzheimer's Association</a>
@@ -25,7 +26,7 @@
             <!-- top video player (twitch) -->
             <h2>Live stream</h2>
             <div id="twitch-embed" class="aspect-video"></div>
-            <p>The 12-hour stream starts on November 10 at 9am PST.</p>
+            <p>The 12-hour stream starts on November 10, 2024 at 11am PST.</p>
 
             <!-- stream progress -->
             <h2>Stream progress</h2>
@@ -37,8 +38,8 @@
                 max="100"
             ></progress>
             <div class="w-full flex justify-between not-prose mb-4">
-                <p>11/10 @ 9am PST</p>
-                <p>11/10 @ 9pm PST</p>
+                <p>Nov 10, '24 @ 11am PST</p>
+                <p>Nov 10, '24 @ 11pm PST</p>
             </div>
 
             <!-- manual donation bar -->
@@ -76,16 +77,20 @@
             </p>
 
             <!-- alzheimer's stats video (YouTube) -->
-            <iframe
-                width="560"
-                height="315"
-                src="https://www.youtube.com/embed/Bwcsjpz_oUM?si=7cRH3ae33-fxSBhy&amp;controls=0"
-                title="YouTube video player"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin"
-                allowfullscreen
-            ></iframe>
+            <div class="my-12">
+                <iframe
+                    class="w-full aspect-video"
+                    src="https://www.youtube.com/embed/Bwcsjpz_oUM?si=7cRH3ae33-fxSBhy&amp;controls=0"
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen
+                ></iframe>
+                <p class="text-sm font-bold">
+                    Statistics about the prevalence of Alzheimer's Disease
+                </p>
+            </div>
 
             <p>
                 Nearly 7 million Americans are currently living with Alzheimer’s
@@ -99,8 +104,9 @@
                 2015, and passed away in 2022.
             </p>
 
-            <div>
+            <div class="my-12">
                 <img src="styles\images\charity\pops.jpg" />
+                <p class="text-sm font-bold -mt-4">Pops & me ('94)</p>
             </div>
 
             <p>
@@ -117,21 +123,24 @@
             </p>
 
             <!-- alzheimer's assoc. about video (YouTube) -->
-            <iframe
-                width="560"
-                height="315"
-                src="https://www.youtube.com/embed/8FRxGCXDGlY?si=YpJEGcULRCGGtgHy&amp;controls=0"
-                title="YouTube video player"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin"
-                allowfullscreen
-            ></iframe>
-
-            <p>
-                You can learn more about the Alzheimer’s Association and their
-                work at <a href="https://alz.org/about">alz.org/about</a>
-            </p>
+            <div class="my-12">
+                <iframe
+                    class="w-full aspect-video"
+                    src="https://www.youtube.com/embed/8FRxGCXDGlY?si=YpJEGcULRCGGtgHy&amp;controls=0"
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen
+                ></iframe>
+                <p class="text-sm font-bold">
+                    You can learn more about the Alzheimer’s Association and
+                    their work at
+                    <a href="https://alz.org/about" class="font-bold"
+                        >alz.org/about</a
+                    >
+                </p>
+            </div>
 
             <h2>What?</h2>
             <p>TBD.</p>
@@ -229,17 +238,17 @@
             }
         </script>
         <script type="module">
-            // 1. Fixed time Nov 10 2024 9am PST
-            const startTime = new Date("2024-11-10T09:00:00-08:00");
-            // 2. Fixed time Nov 10 2024 9pm PST (add 12 hours)
-            const endTime = new Date("2024-11-10T21:00:00-08:00");
+            // 1. Fixed time Nov 10 2024 11am PST
+            const startTime = new Date("2024-11-10T11:00:00-08:00");
+            // 2. Fixed time Nov 10 2024 11pm PST (add 12 hours)
+            const endTime = new Date("2024-11-10T23:00:00-08:00");
 
             function updateTime() {
                 // 3. Current time
                 const now = new Date();
-                const beforeStream = new Date("2024-11-10T08:00:00-08:00");
-                const duringStream = new Date("2024-11-10T12:00:00-08:00");
-                const afterStream = new Date("2024-11-10T22:00:00-08:00");
+                const beforeStream = new Date("2024-11-10T09:00:00-08:00");
+                const duringStream = new Date("2024-11-10T13:00:00-08:00");
+                const afterStream = new Date("2024-11-10T23:30:00-08:00");
                 const currentTime = now; // pick different ones here to test
 
                 // Calculate progress (0-1)
