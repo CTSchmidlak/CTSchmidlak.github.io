@@ -29,25 +29,35 @@
     </head>
 
     <!-- body-level padding and centering the content area -->
-    <body class="p-2 flex justify-center w-full">
+    <body class="p-2 flex justify-center w-full bg-[#ee533f]">
         <!-- content area (prose does width limiting) -->
         <div class="prose">
             <!-- title area -->
             <header class="text-center text-balance">
-                <h1 class="mb-0 text-3xl uppercase">
-                    Schmidlak's 34th Birthday
-                </h1>
-                <h1 class="mt-0 text-5xl">12-Hour Charity Stream</h1>
-                <h2>
-                    Raising Money for the
-                    <a href="https://www.alz.org/">Alzheimer's Association</a>
-                </h2>
+                <div class="p-2 bg-[#f6d466]">
+                    <div class="mb-2 text-2xl uppercase">
+                        Schmidlak's 34th Birthday
+                    </div>
+                    <div class="text-4xl">12-Hour Charity Stream</div>
+                </div>
+                <div class="mt-4 mb-4 bg-[#f6d466]">
+                    <div>
+                        Raising Money for the
+                        <a href="https://www.alz.org/"
+                            >Alzheimer's Association</a
+                        >
+                    </div>
+                </div>
             </header>
 
             <!-- top video player (twitch) -->
-            <h2>Live stream</h2>
-            <div id="twitch-embed" class="aspect-video"></div>
-            <p>The 12-hour stream starts on November 10, 2024 at 11am PST.</p>
+            <div class="p-2 bg-[#f6d466]">
+                <h1>Live stream</h1>
+                <div id="twitch-embed" class="aspect-video"></div>
+                <p>
+                    The 12-hour stream starts on November 10, 2024 at 11am PST.
+                </p>
+            </div>
 
             <!-- stream progress -->
             <h2>Stream progress</h2>
