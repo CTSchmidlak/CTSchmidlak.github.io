@@ -26,41 +26,63 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+        <style>
+            @font-face {
+                font-family: first;
+                src: url(fonts/first.ttf);
+            }
+
+            @font-face {
+                font-family: roobert;
+                src: url(fonts/Roobert.ttf);
+            }
+        </style>
     </head>
 
     <!-- body-level padding and centering the content area -->
-    <body class="p-2 flex justify-center w-full bg-[#ee533f]">
+    <body class="flex flex-row w-full font-[roobert]">
         <!-- content area (prose does width limiting) -->
-        <div class="prose">
+        <div class="flex-1 bg-gradient-to-l from-[#4a0d66] to-purple-950"></div>
+        <div class="basis-1/2 p-4 prose max-w-5xl">
             <!-- title area -->
-            <header class="text-center text-balance">
-                <div class="p-2 bg-[#f6d466]">
-                    <div class="mb-2 text-2xl uppercase">
-                        Schmidlak's 34th Birthday
+            <header class="text-center text-balance text-[#4a0d66]">
+                <div>
+                    <div class="text-2xl uppercase">
+                        <b>Schmidlak's 34th Birthday</b>
                     </div>
-                    <div class="text-4xl">12-Hour Charity Stream</div>
                 </div>
-                <div class="mt-4 mb-4 bg-[#f6d466]">
-                    <div>
-                        Raising Money for the
+                <div class="mt-2 p-2">
+                    <div class="text-4xl font-[first]">
+                        I2 Hour Charity Stream
+                    </div>
+                </div>
+                <div class="flex flex-col justify-center space-y-4 mt-4">
+                    <div class="pl-2 text-xl">
+                        <b>34 games • 34 challenges</b>
+                    </div>
+                    <div>Raising money for the</div>
+                    <div class="flex justify-center">
                         <a href="https://www.alz.org/"
-                            >Alzheimer's Association</a
-                        >
+                            ><img
+                                class="mt-1 max-w-sm"
+                                src="assets/alz-logo.png"
+                        /></a>
                     </div>
                 </div>
+                <hr class="mt-2 mb-6" />
             </header>
 
             <!-- top video player (twitch) -->
-            <div class="p-2 bg-[#f6d466]">
-                <h1>Live stream</h1>
+            <div class="p-2 text-[#4a0d66]">
+                <h1 class="text-[#4a0d66]">Live stream</h1>
                 <div id="twitch-embed" class="aspect-video"></div>
                 <p>
-                    The 12-hour stream starts on November 10, 2024 at 11am PST.
+                    The 12-hour stream starts on November 16, 2024 at 11am PST.
                 </p>
             </div>
 
             <!-- stream progress -->
-            <h2>Stream progress</h2>
+            <h2 class="text-[#4a0d66] mt-2">Stream progress</h2>
             <p class="not-prose" id="time-status"></p>
             <progress
                 id="time-progress"
@@ -68,13 +90,15 @@
                 value="0"
                 max="100"
             ></progress>
-            <div class="w-full flex justify-between not-prose mb-4">
-                <p>Nov 10, '24 @ 11am PST</p>
-                <p>Nov 10, '24 @ 11pm PST</p>
+            <div
+                class="w-full flex justify-between not-prose mb-4 text-[#4a0d66]"
+            >
+                <p>Nov 16, '24 @ 11am PST</p>
+                <p>Nov 16, '24 @ 11pm PST</p>
             </div>
 
             <!-- manual donation bar -->
-            <h2>Donation progress</h2>
+            <h2 class="text-[#4a0d66]">Donation progress</h2>
             <p class="not-prose" id="dono-status"></p>
             <progress
                 id="dono-progress"
@@ -92,7 +116,7 @@
                 class=""
             >
                 <button
-                    class="border-black border-2 p-2 hover:bg-black hover:text-white"
+                    class="border-[#4a0d66] border-2 p-2 hover:bg-[#4a0d66] hover:text-white text-[#4a0d66]"
                 >
                     Donate
                 </button>
@@ -132,12 +156,12 @@
             <p>
                 Unfortunately, I am all too familiar with just how devastating
                 this disease can be. My father was diagnosed with Alzheimer’s in
-                2015, and passed away in 2022.
+                2017, and passed away in 2022.
             </p>
 
             <div class="my-12">
                 <img src="styles\images\charity\pops.jpg" />
-                <p class="text-sm font-bold -mt-4">Pops & me ('94)</p>
+                <p class="text-sm font-bold -mt-4">Pops & me ('92)</p>
             </div>
 
             <p>
@@ -219,6 +243,7 @@
             <!-- <h2>Debug Zone</h2> -->
             <!-- <pre id="fetch-results"></pre> -->
         </div>
+        <div class="flex-1 bg-gradient-to-r from-[#4a0d66] to-purple-950"></div>
 
         <!-- scripts go at the end of the body for faster page rendering -->
 
@@ -270,17 +295,17 @@
         </script>
         <script type="module">
             // 1. Fixed time Nov 10 2024 11am PST
-            const startTime = new Date("2024-11-10T11:00:00-08:00");
+            const startTime = new Date("2024-11-16T11:00:00-08:00");
             // 2. Fixed time Nov 10 2024 11pm PST (add 12 hours)
-            const endTime = new Date("2024-11-10T23:00:00-08:00");
+            const endTime = new Date("2024-11-16T23:00:00-08:00");
 
             function updateTime() {
                 // 3. Current time
                 const now = new Date();
-                const beforeStream = new Date("2024-11-10T09:00:00-08:00");
-                const duringStream = new Date("2024-11-10T13:00:00-08:00");
-                const afterStream = new Date("2024-11-10T23:30:00-08:00");
-                const currentTime = now; // pick different ones here to test
+                const beforeStream = new Date("2024-11-16T09:00:00-08:00");
+                const duringStream = new Date("2024-11-16T13:00:00-08:00");
+                const afterStream = new Date("2024-11-16T23:30:00-08:00");
+                const currentTime = duringStream; // pick different ones here to test
 
                 // Calculate progress (0-1)
                 const progress = Math.max(
