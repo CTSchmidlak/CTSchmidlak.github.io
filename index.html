@@ -135,14 +135,16 @@
 
             <!-- manual donation bar -->
             <h2 class="text-[#4a0d66]">Donation progress</h2>
-            <p class="not-prose" id="dono-status"></p>
+            <p class="not-prose text-[#4a0d66]" id="dono-status"></p>
             <progress
                 id="dono-progress"
                 class="w-full bg-gray-200 h-4"
                 value="0"
                 max="100"
             ></progress>
-            <div class="w-full flex justify-between not-prose mb-4">
+            <div
+                class="w-full flex justify-between not-prose mb-4 text-[#4a0d66]"
+            >
                 <p>$0</p>
                 <p>$900</p>
             </div>
@@ -163,7 +165,7 @@
 
             <hr />
 
-            <h2>Why?</h2>
+            <h2 class="text-[#4a0d66]">Why?</h2>
             <p>
                 Alzheimer's is a type of dementia that affects memory, thinking,
                 and behavior and accounts for 60-80% of dementia cases.
@@ -200,15 +202,14 @@
                 2017, and passed away in 2022.
             </p>
 
-            <div class="my-12">
+            <div class="flex flex-col my-12 justify-center">
                 <img src="styles\images\charity\pops.jpg" />
                 <p class="text-sm font-bold -mt-4">Pops & me ('92)</p>
             </div>
 
             <p>
-                That is why, for my birthday, there would be no greater gift you
-                could give me than joining me in making a donation to help lead
-                the fight against Alzheimer’s Disease.
+                That is why for my birthday I am asking you to join me in making
+                a donation to help lead the fight against Alzheimer’s Disease.
             </p>
 
             <p>
@@ -238,22 +239,124 @@
                 </p>
             </div>
 
-            <h2>What?</h2>
-            <p>TBD.</p>
+            <hr />
 
-            <h2>When?</h2>
+            <h2 class="text-[#4a0d66]">What?</h2>
             <p>
-                The charity live stream will begin at 11am PT on November 10th
+                To celebrate my 34th year of life, I will be taking on a
+                gauntlet of 34 retro video games from various years and
+                platforms.
+            </p>
+
+            <!-- game box art grid -->
+            <div class="flex flex-wrap justify-center">
+                <img
+                    class="w-20 h-32 m-2 object-cover shadow-[0_10px_20px_0px_rgba(0,0,0,0.5)]"
+                    src="assets/box_art/castlevania.jpg"
+                    title="Castlevania"
+                />
+                <img
+                    class="w-20 h-32 m-2 object-cover shadow-[0_10px_20px_0px_rgba(0,0,0,0.5)]"
+                    src="assets/box_art/castlevania.jpg"
+                    title="Castlevania"
+                />
+                <img
+                    class="w-20 h-32 m-2 object-cover shadow-[0_10px_20px_0px_rgba(0,0,0,0.5)]"
+                    src="assets/box_art/castlevania.jpg"
+                    title="Castlevania"
+                />
+                <img
+                    class="w-20 h-32 m-2 object-cover shadow-[0_10px_20px_0px_rgba(0,0,0,0.5)]"
+                    src="assets/box_art/castlevania.jpg"
+                    title="Castlevania"
+                />
+                <img
+                    class="w-20 h-32 m-2 object-cover shadow-[0_10px_20px_0px_rgba(0,0,0,0.5)]"
+                    src="assets/box_art/castlevania.jpg"
+                    title="Castlevania"
+                />
+                <img
+                    class="w-20 h-32 m-2 object-cover shadow-[0_10px_20px_0px_rgba(0,0,0,0.5)]"
+                    src="assets/box_art/castlevania.jpg"
+                    title="Castlevania"
+                />
+                <img
+                    class="w-20 h-32 m-2 object-cover shadow-[0_10px_20px_0px_rgba(0,0,0,0.5)]"
+                    src="assets/box_art/castlevania.jpg"
+                    title="Castlevania"
+                />
+                <img
+                    class="w-20 h-32 m-2 object-cover shadow-[0_10px_20px_0px_rgba(0,0,0,0.5)]"
+                    src="assets/box_art/castlevania.jpg"
+                    title="Castlevania"
+                />
+                <img
+                    class="w-20 h-32 m-2 object-cover shadow-[0_10px_20px_0px_rgba(0,0,0,0.5)]"
+                    src="assets/box_art/castlevania.jpg"
+                    title="Castlevania"
+                />
+            </div>
+
+            <p>
+                Each game comes with an in-game challenge to test my skills. I
+                will donate $10 for every challenge I complete during the
+                stream. At the end of the stream, I will be forced to eat 2
+                chicken nuggets per failed challenge (e.g. a maximum penalty of
+                68 nuggets).
+            </p>
+
+            <table class="table-auto">
+                <thead class="bg-[#4a0d66]">
+                    <tr>
+                        <th class="p-2 text-white text-center">Game</th>
+                        <th class="p-2 text-white text-center">Challenge</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="p-2 text-center">Game #1</td>
+                        <td class="p-2 text-center">Challenge Desc. #1</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2 text-center">Game #2</td>
+                        <td class="p-2 text-center">Challenge Desc. #2</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2 text-center">Game #3</td>
+                        <td class="p-2 text-center">Challenge Desc. #3</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p class="text-sm font-bold -mt-4">
+                The full list of challenges will be made available during the
+                stream
+            </p>
+
+            <p>
+                Additionally, to ratchet up the difficulty, I will be playing
+                the games using a shuffler. The shuffler will randomly swap the
+                game I am playing every five minutes.
+            </p>
+
+            <hr />
+
+            <h2 class="text-[#4a0d66]">When?</h2>
+            <p>
+                The charity live stream will begin at 11am PT on November 16th
                 and will last around 12 hours. The window to donate opens on
-                November 3rd and closes on November 17th, so please feel free to
+                November 3rd and closes on November 30th, so please feel free to
                 donate before or after the live stream.
             </p>
 
-            <h2>Where?</h2>
+            <hr />
+
+            <h2 class="text-[#4a0d66]">Where?</h2>
             <p>
                 The stream will go live on Twitch at
                 <a href="https://twitch.tv/schmidlak">twitch.tv/schmidlak</a>
             </p>
+
             <p>
                 If you miss the stream and want to watch the replay, you can
                 find the stream archived on my YouTube channel at
@@ -262,7 +365,9 @@
                 </a>
             </p>
 
-            <h2>How?</h2>
+            <hr />
+
+            <h2 class="text-[#4a0d66]">How?</h2>
             <p>
                 The donation page is hosted by Streamlabs and can be found by
                 <a
@@ -279,6 +384,8 @@
                 receive a live notification and will be sure to give you a shout
                 out!
             </p>
+
+            <p><a href="#">Back to top ↑</a></p>
 
             <!-- Debug zone. Enable to dump data here to check out. -->
             <!-- <h2>Debug Zone</h2> -->
@@ -346,7 +453,7 @@
                 const beforeStream = new Date("2024-11-16T09:00:00-08:00");
                 const duringStream = new Date("2024-11-16T13:00:00-08:00");
                 const afterStream = new Date("2024-11-16T23:30:00-08:00");
-                const currentTime = duringStream; // pick different ones here to test
+                const currentTime = now; // pick different ones here to test
 
                 // Calculate progress (0-1)
                 const progress = Math.max(
