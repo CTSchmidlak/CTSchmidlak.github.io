@@ -92,7 +92,7 @@
                         I2 Hour Charity Stream
                     </div>
                 </div>
-                <div class="flex flex-col justify-center space-y-4 mt-4">
+                <div class="flex flex-col justify-center space-y-4 mt-4 mb-4">
                     <div class="pl-2 text-xl">
                         <b>34 games • 34 challenges</b>
                     </div>
@@ -100,9 +100,12 @@
                     <div class="flex justify-center">
                         <a href="https://www.alz.org/"
                             ><img
-                                class="mt-1 max-w-sm"
+                                class="mt-1 mb-0 max-w-sm"
                                 src="assets/alz-logo.png"
                         /></a>
+                    </div>
+                    <div class="italic">
+                        Aired on: November 16, 2024 at 11am PST
                     </div>
                 </div>
                 <hr class="mt-2 mb-6" />
@@ -110,28 +113,22 @@
 
             <!-- top video player (twitch) -->
             <div class="p-2 text-[#4a0d66]">
-                <h1 class="text-[#4a0d66]">Live stream</h1>
-                <div id="twitch-embed" class="aspect-video"></div>
-                <p>
-                    The 12-hour stream starts on November 16, 2024 at 11am PST.
-                </p>
+                <h1 class="text-[#4a0d66]">Stream Archive</h1>
+                <iframe
+                    class="w-full aspect-video"
+                    src="https://www.youtube.com/embed/qIUHT7JCXiM?si=VdY1wQIBMeGW2_XE"
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen
+                ></iframe>
+                <div class="mt-6">
+                    Watch the charity stream in its entirety on YouTube now!
+                </div>
             </div>
 
-            <!-- stream progress -->
-            <h2 class="text-[#4a0d66] mt-2">Stream progress</h2>
-            <p class="not-prose text-[#4a0d66]" id="time-status"></p>
-            <progress
-                id="time-progress"
-                class="w-full bg-gray-200 h-4"
-                value="0"
-                max="100"
-            ></progress>
-            <div
-                class="w-full flex justify-between not-prose mb-4 text-[#4a0d66]"
-            >
-                <p>Nov 16, '24 @ 11am PST</p>
-                <p>Nov 16, '24 @ 11pm PST</p>
-            </div>
+            <hr />
 
             <!-- manual donation bar -->
             <h2 class="text-[#4a0d66]">Donation progress</h2>
@@ -151,16 +148,18 @@
 
             <!-- donation button -->
             <div class="text-center">
-                <a
-                    href="https://streamlabscharity.com/@schmidlak/2024-birthday-stream-for-alzheimers-awareness-and-research"
-                    target="_blank"
-                >
+                <a target="_blank">
                     <button
                         class="transition ease-in-out w-3/4 h-20 mt-8 mb-6 rounded-full bg-[#4a0d66] p-2 hover:bg-purple-900 text-3xl text-white uppercase hover:-translate-y-2"
                     >
-                        <b>Donate Here!</b>
+                        <b>We met our goal!</b>
                     </button>
                 </a>
+                <p>
+                    Thank you to everyone who donated to help us meet our goal.
+                    With your generosity we were able to raise $900 for the
+                    fight against Alzheimer's.
+                </p>
             </div>
 
             <hr />
@@ -178,7 +177,7 @@
             <div class="my-12">
                 <iframe
                     class="w-full aspect-video"
-                    src="https://www.youtube.com/embed/Bwcsjpz_oUM?si=7cRH3ae33-fxSBhy&amp;controls=0"
+                    src="https://www.youtube.com/embed/Bwcsjpz_oUM?si=0zo69Nvqm50N4G8E"
                     title="YouTube video player"
                     frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -223,7 +222,7 @@
             <div class="my-12">
                 <iframe
                     class="w-full aspect-video"
-                    src="https://www.youtube.com/embed/8FRxGCXDGlY?si=YpJEGcULRCGGtgHy&amp;controls=0"
+                    src="https://www.youtube.com/embed/8FRxGCXDGlY?si=dfc1QNSLQ726GzlA"
                     title="YouTube video player"
                     frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -233,9 +232,9 @@
                 <p class="text-sm font-bold">
                     You can learn more about the Alzheimer’s Association and
                     their work at
-                    <a href="https://alz.org/about" class="font-bold"
-                        >alz.org/about</a
-                    >
+                    <a href="https://alz.org/about" class="font-bold">
+                        alz.org/about
+                    </a>
                 </p>
             </div>
 
