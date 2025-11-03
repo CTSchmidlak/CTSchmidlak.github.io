@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Schmidlak's 34th Birthday 12-Hour Charity Stream</title>
+        <meta charset="UTF-8" />
+
+        <!-- social stuff for embeds (FB, twitter, etc.) -->
+        <meta content="https://ctschmidlak.com/" property="og:url" />
+        <meta
+            content="Schmidlak's 34th Birthday 12-Hour Charity Stream"
+            property="og:description"
+        />
+        <meta
+            name="twitter:description"
+            content="Schmidlak's 34th Birthday 12-Hour Charity Stream"
+        />
+        <meta
+            name="twitter:image"
+            content="https://ctschmidlak.com/assets/2024-charity-stream-social.png"
+        />
+        <meta
+            property="og:image"
+            content="https://ctschmidlak.com/assets/2024-charity-stream-social.png"
+        />
+        <meta name="twitter:card" content="summary_large_image" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+        <style>
+            @font-face {
+                font-family: first;
+                src: url(fonts/first.ttf);
+            }
+
+            @font-face {
+                font-family: roobert;
+                src: url(fonts/Roobert.ttf);
+            }
+
+            progress[value] {
+                --color: repeating-linear-gradient(
+                        135deg,
+                        rgba(255, 255, 255, 0.2) 0 10px,
+                        #ffffff00 0 20px
+                    ),
+                    #4a0d66; /* the progress color */
+                --background: lightgrey; /* the background color */
+
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                -webkit-animation: animate-stripes 5s linear infinite;
+                animation: animate-stripes 5s linear infinite;
+                appearance: none;
+                border: none;
+                border-radius: 10em;
+                width: 100%;
+                height: 1.5rem;
+                margin-top: 0.5rem;
+                background: var(--background);
+            }
+
+            progress[value]::-webkit-progress-bar {
+                border-radius: 10em;
+                background: var(--background);
+            }
+            progress[value]::-webkit-progress-value {
+                border-radius: 10em;
+                background: var(--color);
+                min-width: 3%;
+            }
+            progress[value]::-moz-progress-bar {
+                border-radius: 10em;
+                background: var(--color);
+            }
+        </style>
+    </head>
+
+    <!-- body-level padding and centering the content area -->
+    <body class="flex flex-row w-full font-[roobert]">
+        <!-- content area (prose does width limiting) -->
+        <div class="flex-1 bg-gradient-to-l from-[#4a0d66] to-purple-950"></div>
+        <div class="basis-1/2 p-4 prose max-w-5xl">
+            <!-- title area -->
+            <header class="text-center text-balance text-[#4a0d66]">
+                <div>
+                    <div class="text-2xl uppercase">
+                        <b>Schmidlak's 34th Birthday</b>
+                    </div>
+                </div>
+                <div class="mt-2 p-2">
+                    <div class="text-4xl font-[first]">
+                        I2 Hour Charity Stream
+                    </div>
+                </div>
+                <div class="flex flex-col justify-center space-y-4 mt-4">
+                    <div class="pl-2 text-xl">
+                        <b>34 games • 34 challenges</b>
+                    </div>
+                    <div>Raising money for the</div>
+                    <div class="flex justify-center">
+                        <a href="https://www.alz.org/"
+                            ><img
+                                class="mt-1 max-w-sm"
+                                src="assets/alz-logo.png"
+                        /></a>
+                    </div>
+                </div>
+                <hr class="mt-2 mb-6" />
+            </header>
+
+            <!-- top video player (twitch) -->
+            <div class="p-2 text-[#4a0d66]">
+                <h1 class="text-[#4a0d66]">Live stream</h1>
+                <div id="twitch-embed" class="aspect-video"></div>
+                <p>
+                    The 12-hour stream starts on November 16, 2024 at 11am PST.
+                </p>
+            </div>
+
+            <!-- stream progress -->
+            <h2 class="text-[#4a0d66] mt-2">Stream progress</h2>
+            <p class="not-prose text-[#4a0d66]" id="time-status"></p>
+            <progress
+                id="time-progress"
+                class="w-full bg-gray-200 h-4"
+                value="0"
+                max="100"
+            ></progress>
+            <div
+                class="w-full flex justify-between not-prose mb-4 text-[#4a0d66]"
+            >
+                <p>Nov 16, '24 @ 11am PST</p>
+                <p>Nov 16, '24 @ 11pm PST</p>
+            </div>
+
+            <!-- manual donation bar -->
+            <h2 class="text-[#4a0d66]">Donation progress</h2>
+            <p class="not-prose text-[#4a0d66]" id="dono-status"></p>
+            <progress
+                id="dono-progress"
+                class="w-full bg-gray-200 h-4"
+                value="0"
+                max="100"
+            ></progress>
+            <div
+                class="w-full flex justify-between not-prose mb-4 text-[#4a0d66]"
+            >
+                <p>$0</p>
+                <p>$900</p>
+            </div>
+
+            <!-- donation button -->
+            <div class="text-center">
+                <a
+                    href="https://streamlabscharity.com/@schmidlak/2024-birthday-stream-for-alzheimers-awareness-and-research"
+                    target="_blank"
+                >
+                    <button
+                        class="transition ease-in-out w-3/4 h-20 mt-8 mb-6 rounded-full bg-[#4a0d66] p-2 hover:bg-purple-900 text-3xl text-white uppercase hover:-translate-y-2"
+                    >
+                        <b>Donate Here!</b>
+                    </button>
+                </a>
+            </div>
+
+            <hr />
+
+            <h2 class="text-[#4a0d66]">Why?</h2>
+            <p>
+                Alzheimer's is a type of dementia that affects memory, thinking,
+                and behavior and accounts for 60-80% of dementia cases.
+                Alzheimer's is a progressive disease, where symptoms gradually
+                worsen over a number of years until individuals lose the ability
+                to carry on a conversation and respond to their environment.
+            </p>
+
+            <!-- alzheimer's stats video (YouTube) -->
+            <div class="my-12">
+                <iframe
+                    class="w-full aspect-video"
+                    src="https://www.youtube.com/embed/Bwcsjpz_oUM?si=7cRH3ae33-fxSBhy&amp;controls=0"
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen
+                ></iframe>
+                <p class="text-sm font-bold">
+                    Statistics about the prevalence of Alzheimer's Disease
+                </p>
+            </div>
+
+            <p>
+                Nearly 7 million Americans are currently living with Alzheimer’s
+                and approximately 33% of seniors die with Alzheimer’s or another
+                form of Dementia.
+            </p>
+
+            <p>
+                Unfortunately, I am all too familiar with just how devastating
+                this disease can be. My father was diagnosed with Alzheimer’s in
+                2017, and passed away in 2022.
+            </p>
+
+            <div class="flex flex-col my-12 justify-center">
+                <img src="styles\images\charity\pops.jpg" />
+                <p class="text-sm font-bold -mt-4">Pops & me ('92)</p>
+            </div>
+
+            <p>
+                That is why for my birthday I am asking you to join me in making
+                a donation to help lead the fight against Alzheimer’s Disease.
+            </p>
+
+            <p>
+                The Alzheimer's Association leads the way to end Alzheimer's and
+                all other dementia — by accelerating global research, driving
+                risk reduction and early detection, and maximizing quality care
+                and support.
+            </p>
+
+            <!-- alzheimer's assoc. about video (YouTube) -->
+            <div class="my-12">
+                <iframe
+                    class="w-full aspect-video"
+                    src="https://www.youtube.com/embed/8FRxGCXDGlY?si=YpJEGcULRCGGtgHy&amp;controls=0"
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen
+                ></iframe>
+                <p class="text-sm font-bold">
+                    You can learn more about the Alzheimer’s Association and
+                    their work at
+                    <a href="https://alz.org/about" class="font-bold"
+                        >alz.org/about</a
+                    >
+                </p>
+            </div>
+
+            <hr />
+
+            <h2 class="text-[#4a0d66]">What?</h2>
+            <p>
+                To celebrate my 34th year of life, I will be taking on a
+                gauntlet of 34 retro video games from various years and
+                platforms.
+            </p>
+
+            <!-- game box art grid -->
+            <div class="flex flex-wrap justify-center">
+                <img
+                    class="w-24 h-32 m-2 object-cover shadow-[0_5x_10px_0px_rgba(0,0,0,0.3)]"
+                    src="assets/box_art/label_n64_mariokart64.jpg"
+                    title="Mario Kart 64"
+                />
+                <img
+                    class="w-24 h-32 m-2 object-cover shadow-[0_5px_10px_0px_rgba(0,0,0,0.3)]"
+                    src="assets/box_art/label_n64_starfox64.jpg"
+                    title="StarFox 64"
+                />
+                <img
+                    class="w-24 h-32 m-2 object-cover shadow-[0_5px_10px_0px_rgba(0,0,0,0.3)]"
+                    src="assets/box_art/n64_supersmashbros_label.jpg"
+                    title="Super Smash Bros."
+                />
+                <img
+                    class="w-24 h-32 m-2 object-cover shadow-[0_5px_10px_0px_rgba(0,0,0,0.3)]"
+                    src="assets/box_art/genesis_outrunners.jpg"
+                    title="OutRunners"
+                />
+                <img
+                    class="w-24 h-32 m-2 object-cover shadow-[0_5px_10px_0px_rgba(0,0,0,0.3)]"
+                    src="assets/box_art/Dynamite-Headdy.jpg"
+                    title="Dynamite Headdy"
+                />
+                <img
+                    class="w-24 h-32 m-2 object-cover shadow-[0_5px_10px_0px_rgba(0,0,0,0.3)]"
+                    src="assets/box_art/gen_musha.jpg"
+                    title="M.U.S.H.A"
+                />
+                <img
+                    class="w-24 h-32 m-2 object-cover shadow-[0_5px_10px_0px_rgba(0,0,0,0.3)]"
+                    src="assets/box_art/gb_pokemonyellow_au.jpg"
+                    title="Pokémon Yellow"
+                />
+                <img
+                    class="w-24 h-32 m-2 object-cover shadow-[0_5px_10px_0px_rgba(0,0,0,0.3)]"
+                    src="assets/box_art/gb_tetris_2.jpg"
+                    title="Tetris"
+                />
+                <img
+                    class="w-24 h-32 m-2 object-cover shadow-[0_5px_10px_0px_rgba(0,0,0,0.3)]"
+                    src="assets/box_art/ps1_metalgearsolidvrmissions_5.jpg"
+                    title="Metal Gear Solid: VR Missions"
+                />
+            </div>
+
+            <p class="text-sm font-bold">
+                A small sample of the games to expect
+            </p>
+
+            <p>
+                Each game comes with an in-game challenge to test my skills. I
+                will donate $10 for every challenge I complete during the
+                stream.
+            </p>
+
+            <table class="table-auto">
+                <thead class="bg-[#4a0d66]">
+                    <tr>
+                        <th class="p-2 text-white text-center">Game</th>
+                        <th class="p-2 text-white text-center">Challenge</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="p-2 text-center">Pokémon Yellow</td>
+                        <td class="p-2 text-center">
+                            Catch five different Pokémon
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="p-2 text-center">Tetris</td>
+                        <td class="p-2 text-center">
+                            Clear 60 lines in one match
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="p-2 text-center">Mario Kart 64</td>
+                        <td class="p-2 text-center">
+                            Win gold in 100cc Mushroom Cup
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="p-2 text-center">Star Fox 64</td>
+                        <td class="p-2 text-center">Finish 3 Missions</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2 text-center">Super Smash Bros.</td>
+                        <td class="p-2 text-center">Defeat Master Hand</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2 text-center">
+                            Metal Gear Solid: VR Missions
+                        </td>
+                        <td class="p-2 text-center">
+                            Clear Sneaking Mode (no weapons)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="p-2 text-center">Outrunners</td>
+                        <td class="p-2 text-center">
+                            Win a race in "Arcade" mode
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="p-2 text-center">Dynamite Headdy</td>
+                        <td class="p-2 text-center">
+                            Beat tutorial mini-games and finish "Toys in the
+                            Hood"
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="p-2 text-center">M.U.S.H.A.</td>
+                        <td class="p-2 text-center">Finish Stage 2</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p class="text-sm font-bold -mt-4">
+                The full list of games and challenges will be made available
+                during the stream
+            </p>
+
+            <p>
+                Additionally, to add some excitement, I will be playing the
+                games using a shuffler. The shuffler will randomly swap the game
+                I am playing every five minutes.
+            </p>
+
+            <hr />
+
+            <h2 id="incentives" class="text-[#4a0d66]">Donation Incentives</h2>
+            <p>
+                Your donations aren't just for a good cause, they also make the
+                stream more fun! Here are the incentives for this year:
+            </p>
+
+            <div class="ml-2 mr-2 flex flex-col border-2">
+                <div class="pl-4 pr-4 bg-[#4a0d661e]">
+                    <h3 class="text-[#4a0d66]">$5 - Swap the game</h3>
+                    <p>I will immediately swap to a random game.</p>
+                </div>
+
+                <div class="pl-4 pr-4">
+                    <h3 class="text-[#4a0d66]">$10 - Golden Retriever Fact</h3>
+                    <p>
+                        I will read a random fact about the world's best dog
+                        breed.
+                    </p>
+                </div>
+
+                <div class="pl-4 pr-4 bg-[#4a0d661e]">
+                    <h3 class="text-[#4a0d66]">$20 - D.K. Rap</h3>
+                    <p>
+                        We will stop everything to watch the D.K. Rap on stream.
+                    </p>
+                </div>
+
+                <div class="pl-4 pr-4">
+                    <h3 class="text-[#4a0d66]">$30 - Guest Appearance</h3>
+                    <p>My wife will play the next game that we swap to.</p>
+                </div>
+
+                <div class="pl-4 pr-4 bg-[#4a0d661e]">
+                    <h3 class="text-[#4a0d66]">$50 - The Macarena</h3>
+                    <p>I will (attempt) to dance the Macarena on stream.</p>
+                </div>
+
+                <div class="pl-4 pr-4">
+                    <h3 class="text-[#4a0d66]">$100 - Sour Pickle</h3>
+                    <p>
+                        Against my better judgement, I will eat an entire sour
+                        pickle from the Dollar Store on stream.
+                        <a class="text-red-500">**One time only incentive**</a>.
+                    </p>
+                </div>
+            </div>
+            <p class="text-sm font-bold">
+                Donations in any other amount will be rounded down to the
+                nearest available incentive (e.g. a $28 donation would activate
+                the "D.K. Rap" incentive).
+            </p>
+
+            <hr />
+
+            <h2 class="text-[#4a0d66]">When?</h2>
+            <p>
+                The charity live stream will begin at 11am PT on November 16th
+                and will last around 12 hours. The window to donate opens on
+                November 3rd and closes on November 30th, so please feel free to
+                donate before or after the live stream.
+            </p>
+
+            <hr />
+
+            <h2 class="text-[#4a0d66]">Where?</h2>
+            <p>
+                The stream will go live on Twitch at
+                <a href="https://twitch.tv/schmidlak">twitch.tv/schmidlak</a>
+            </p>
+
+            <p>
+                If you miss the stream and want to watch the replay, you can
+                find the stream archived on my YouTube channel at
+                <a href="https://youtube.com/@CTSchmidlak">
+                    youtube.com/@CTSchmidlak
+                </a>
+            </p>
+
+            <hr />
+
+            <h2 class="text-[#4a0d66]">How?</h2>
+            <p>
+                The donation page is hosted by Streamlabs and can be found by
+                <a
+                    href="https://streamlabscharity.com/@schmidlak/2024-birthday-stream-for-alzheimers-awareness-and-research"
+                    >clicking here.</a
+                >
+                Donations are processed by PayPal.
+            </p>
+
+            <p>
+                Simply select a donation amount, provide your name and a comment
+                (completely optional!) and an email address (required), then hit
+                the “donate” button. If you donate during the stream, I will
+                receive a live notification and will be sure to give you a shout
+                out!
+            </p>
+
+            <p><a href="#">Back to top ↑</a></p>
+
+            <!-- Debug zone. Enable to dump data here to check out. -->
+            <!-- <h2>Debug Zone</h2> -->
+            <!-- <pre id="fetch-results"></pre> -->
+        </div>
+        <div class="flex-1 bg-gradient-to-r from-[#4a0d66] to-purple-950"></div>
+
+        <!-- scripts go at the end of the body for faster page rendering -->
+
+        <!-- Twitch embeds (https://dev.twitch.tv/docs/embed/everything/) -->
+        <!-- Load the Twitch embed JavaScript file -->
+        <script src="https://embed.twitch.tv/embed/v1.js"></script>
+
+        <!-- Create a Twitch.Embed object that will render within the "twitch-embed" element -->
+        <script type="text/javascript">
+            new Twitch.Embed("twitch-embed", {
+                // height and width are a bit confusing to set, but both 100%
+                // seems to work well since we set the aspect ratio on the <div>
+                // that will contain it
+                width: "100%",
+                height: "100%",
+                channel: "schmidlak",
+                layout: "video", // no chat
+            });
+        </script>
+
+        <!-- Here we try to reach the streamlabs API to see if we can get your
+        donation goal progress manually. "module" b/c we use `await` -->
+        <script type="module">
+            try {
+                const url =
+                    "https://streamlabscharity.com/api/v1/users/campaigns/schmidlak/2024-birthday-stream-for-alzheimers-awareness-and-research";
+                const response = await fetch(url);
+                console.log("Fetch response:", response);
+                const data = await response.json();
+                // debug view in debug zone
+                // document.getElementById("fetch-results").textContent =
+                //     JSON.stringify(data, null, 4);
+                const raisedCents = data["amount_raised"];
+                // const raisedCents = 10000; // uncomment to try experimental value
+                const goalCents = data["goal"]["amount"]; // should be 90000 for $900
+                const donoProgressEl = document.getElementById("dono-progress");
+                donoProgressEl.setAttribute(
+                    "value",
+                    Math.min(100, (100 * raisedCents) / goalCents).toFixed(1)
+                );
+                const donoStatusEl = document.getElementById("dono-status");
+                donoStatusEl.textContent = "$" + (raisedCents / 100).toFixed(2);
+            } catch (error) {
+                console.error(
+                    "Error fetching and setting donation progress:",
+                    error
+                );
+            }
+        </script>
+        <script type="module">
+            // 1. Fixed time Nov 10 2024 11am PST
+            const startTime = new Date("2024-11-16T11:00:00-08:00");
+            // 2. Fixed time Nov 10 2024 11pm PST (add 12 hours)
+            const endTime = new Date("2024-11-16T23:00:00-08:00");
+
+            function updateTime() {
+                // 3. Current time
+                const now = new Date();
+                const beforeStream = new Date("2024-11-16T09:00:00-08:00");
+                const duringStream = new Date("2024-11-16T13:00:00-08:00");
+                const afterStream = new Date("2024-11-16T23:30:00-08:00");
+                const currentTime = now; // pick different ones here to test
+
+                // Calculate progress (0-1)
+                const progress = Math.max(
+                    0,
+                    Math.min(
+                        1,
+                        (currentTime - startTime) / (endTime - startTime)
+                    )
+                );
+
+                // Scale to percentage (0-100)
+                const percentProgress = (progress * 100).toFixed(1);
+
+                // Boolean indicators
+                const hasntStartedYet = currentTime < startTime;
+                const hasEnded = currentTime > endTime;
+
+                // Human readable countdown string
+                let countdownString = "";
+                if (hasntStartedYet) {
+                    const diff = startTime - currentTime;
+                    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor(
+                        (diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+                    );
+                    const minutes = Math.floor(
+                        (diff % (1000 * 60 * 60)) / (1000 * 60)
+                    );
+                    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+                    const parts = [];
+                    if (days > 0) {
+                        parts.push(`${days} ${days > 1 ? "days" : "day"}`);
+                    }
+                    if (hours > 0) {
+                        parts.push(`${hours} ${hours > 1 ? "hours" : "hour"}`);
+                    }
+                    if (minutes > 0) {
+                        parts.push(
+                            `${minutes} ${minutes > 1 ? "minutes" : "minute"}`
+                        );
+                    }
+                    if (seconds > 0) {
+                        parts.push(
+                            `${seconds} ${seconds > 1 ? "seconds" : "second"}`
+                        );
+                    }
+
+                    countdownString = `Starts in ${parts.join(" ")}`;
+                    document.getElementById("time-status").textContent =
+                        countdownString;
+                }
+
+                // Current hour string (1-12)
+                if (!hasntStartedYet && !hasEnded) {
+                    let currentHourString = "";
+                    const hoursPassed = Math.ceil(progress * 12);
+                    currentHourString = `LIVE - Hour ${hoursPassed}/12`;
+                    document.getElementById("time-status").textContent =
+                        currentHourString;
+                }
+
+                if (hasEnded) {
+                    document.getElementById("time-status").textContent =
+                        "Thanks for tuning in!";
+                }
+
+                const donoEl = document.getElementById("time-progress");
+                donoEl.setAttribute("value", percentProgress);
+
+                // uncomment to debug
+                // console.log("Progress (0-1):", progress);
+                // console.log("Progress (0-100):", percentProgress);
+                // console.log("Hasn't started yet:", hasntStartedYet);
+                // console.log("Has ended:", hasEnded);
+            }
+
+            // call it once, then every second
+            updateTime();
+            setInterval(updateTime, 1000);
+        </script>
+    </body>
+</html>
