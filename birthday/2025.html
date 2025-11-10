@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cooper's 24-Hour Birthday Bananza Stream</title>
+        <meta charset="UTF-8" />
+
+        <!-- social stuff for embeds (FB, twitter, etc.) -->
+        <meta content="https://ctschmidlak.com/" property="og:url" />
+        <meta
+            content="Cooper's 24-Hour Birthday Bananza Stream"
+            property="og:description"
+        />
+        <meta
+            name="twitter:description"
+            content="Cooper's 24-Hour Birthday Bananza Stream"
+        />
+        <meta
+            name="twitter:image"
+            content="https://ctschmidlak.com/birthday/assets/2025-keyart.png"
+        />
+        <meta
+            property="og:image"
+            content="https://ctschmidlak.com/birthday/assets/2025-keyart.png"
+        />
+        <meta name="twitter:card" content="summary_large_image" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+        <style>
+            @font-face {
+                font-family: first;
+                src: url(fonts/first.ttf);
+            }
+
+            @font-face {
+                font-family: roobert;
+                src: url(fonts/Roobert.ttf);
+            }
+
+            progress[value] {
+                --color: repeating-linear-gradient(
+                        135deg,
+                        #d56014 0 10px,
+                        #e69e08 0 20px
+                    ),
+                    #d56014; /* the progress color */
+                --background: #341c0c; /* the background color */
+
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                -webkit-animation: animate-stripes 5s linear infinite;
+                animation: animate-stripes 5s linear infinite;
+                appearance: none;
+                border: none;
+                border-radius: 10em;
+                width: 100%;
+                height: 1.5rem;
+                margin-top: 0.5rem;
+                background: var(--background);
+            }
+
+            progress[value]::-webkit-progress-bar {
+                border-radius: 10em;
+                background: var(--background);
+            }
+            progress[value]::-webkit-progress-value {
+                border-radius: 10em;
+                background: var(--color);
+                min-width: 3%;
+            }
+            progress[value]::-moz-progress-bar {
+                border-radius: 10em;
+                background: var(--color);
+            }
+        </style>
+    </head>
+
+    <!-- three columns: gradient, content, gradient -->
+    <body class="flex flex-row w-full">
+        <!-- first gradient, left side -->
+        <div class="flex-1 bg-gradient-to-l from-[#e69e08] to-[#d56014]"></div>
+
+        <!-- center column, content area, prose makes text spacing pretty-->
+        <div class="flex flex-col max-w-4xl prose">
+            <!-- hero image-->
+            <div class="bg-[#e69e08]">
+                <img
+                    class="shadow-[0_5px_10px_0px_rgba(0,0,0,0.3)]"
+                    src="assets/2025_keyart.png"
+                />
+            </div>
+
+            <!-- text area -->
+            <div
+                class="w-full justify-center bg-[#f6c785] font-[roobert] text-[#341c0c] p-4"
+            >
+                <!-- top video player (twitch) -->
+                <div class="p-2">
+                    <h1 class="text-[#341c0c]">Live stream</h1>
+                    <div id="twitch-embed" class="aspect-video"></div>
+                    <p>
+                        The 24-hour stream starts on November 14, 2025 at
+                        11:30pm PST.
+                    </p>
+                </div>
+
+                <!-- stream progress -->
+                <h2 class="text-[#341c0c] mt-2">Stream progress</h2>
+                <p class="not-prose text-[#341c0c]" id="time-status"></p>
+                <progress
+                    id="time-progress"
+                    class="w-full bg-gray-200 h-4"
+                    value="0"
+                    max="100"
+                ></progress>
+                <div
+                    class="w-full flex justify-between not-prose mb-4 text-[#341c0c]"
+                >
+                    <p>Fri. Nov 14, '25 @ 11:30pm PST</p>
+                    <p>Sat. Nov 15, '25 @ 11:30pm PST</p>
+                </div>
+
+                <!-- manual donation bar -->
+                <h2 class="text-[#341c0c]">Donation progress</h2>
+                <p class="not-prose text-[#341c0c]" id="dono-status"></p>
+                <progress
+                    id="dono-progress"
+                    class="w-full bg-gray-200 h-4"
+                    value="0"
+                    max="100"
+                ></progress>
+                <div
+                    class="w-full flex justify-between not-prose mb-4 text-[#341c0c]"
+                >
+                    <p>$0</p>
+                    <p>$1,000</p>
+                </div>
+
+                <!-- donation button -->
+                <div class="text-center">
+                    <a
+                        href="https://streamlabscharity.com/@schmidlak/2025-birthday-stream-for-alzheimers-awareness-and-research"
+                        target="_blank"
+                    >
+                        <button
+                            class="transition ease-in-out w-3/4 h-20 mt-8 mb-6 rounded-full bg-[#d56014] p-2 hover:bg-[#e69e08] text-3xl text-white uppercase hover:-translate-y-2"
+                        >
+                            <b>Donate Here!</b>
+                        </button>
+                    </a>
+                </div>
+
+                <hr class="border-[#341c0c]" />
+
+                <h2 class="text-[#341c0c]">What?</h2>
+                <p>
+                    For this year's stream, I will be playing 24 straight hours
+                    of Donkey Kong Bananza for the Switch 2.
+                </p>
+
+                <div class="flex gap-8 p-4">
+                    <div
+                        class="w-1/2 aspect-square flex items-center justify-center overflow-hidden rounded-full"
+                    >
+                        <img
+                            src="assets/bananza_keyart.jpg"
+                            class="object-cover w-full h-full"
+                        />
+                    </div>
+
+                    <div
+                        class="w-1/2 aspect-square flex items-center justify-center overflow-hidden"
+                    >
+                        <img
+                            src="assets/banandium_gem.png"
+                            class="object-cover w-full h-full"
+                        />
+                    </div>
+                </div>
+
+                <p>
+                    The world of Donkey Kong Bananza is filled with
+                    collectibles, most prominently 'Banandium Gems'.
+                </p>
+
+                <p>
+                    There are a total of 1,000 'Banandium Gems' that can be
+                    collected throughout the game, and I will be donating $1 to
+                    the Alzheimer’s Association for each gem I collect during
+                    the stream.
+                </p>
+
+                <hr class="border-[#341c0c]" />
+
+                <h2 class="text-[#341c0c]">When?</h2>
+                <p>
+                    The charity live stream will begin at 11:30pm PT on Friday,
+                    November 14th and will last 24 hours. The window to donate
+                    is
+                    <a class="font-bold italic no-underline">open now</a>
+                    and closes on Sunday, November 30th, so please feel free to
+                    donate before or after the live stream.
+                </p>
+
+                <hr class="border-[#341c0c]" />
+
+                <h2 class="text-[#341c0c]">Where?</h2>
+                <p>
+                    The stream will go live on Twitch at
+                    <a class="text-[#d56014]" href="https://twitch.tv/schmidlak"
+                        >twitch.tv/schmidlak</a
+                    >
+                </p>
+
+                <p>
+                    If you miss the stream and want to watch the replay, you can
+                    find the stream archived on my YouTube channel at
+                    <a
+                        class="text-[#d56014]"
+                        href="https://youtube.com/@CTSchmidlak"
+                    >
+                        youtube.com/@CTSchmidlak
+                    </a>
+                </p>
+
+                <hr class="border-[#341c0c]" />
+
+                <h2 class="text-[#341c0c]">How?</h2>
+                <p>
+                    The donation page is hosted by Streamlabs and can be found
+                    by
+                    <a
+                        class="text-[#d56014]"
+                        href="https://streamlabscharity.com/@schmidlak/2025-birthday-stream-for-alzheimers-awareness-and-research"
+                        >clicking here.</a
+                    >
+                    Donations are processed by PayPal.
+                </p>
+
+                <p>
+                    Simply select a donation amount, provide your name and a
+                    comment (completely optional!) and an email address
+                    (required), then hit the “donate” button. If you donate
+                    during the stream, I will receive a live notification and
+                    will be sure to give you a shout out!
+                </p>
+
+                <hr class="border-[#341c0c]" />
+
+                <h2 class="text-[#341c0c]">Why?</h2>
+                <p>
+                    Alzheimer's is a type of dementia that affects memory,
+                    thinking, and behavior and accounts for 60-80% of dementia
+                    cases. Alzheimer's is a progressive disease, where symptoms
+                    gradually worsen over a number of years until individuals
+                    lose the ability to carry on a conversation and respond to
+                    their environment.
+                </p>
+
+                <!-- alzheimer's stats video (YouTube) -->
+                <div class="my-12">
+                    <iframe
+                        class="w-full aspect-video"
+                        src="https://www.youtube.com/embed/Bwcsjpz_oUM?si=7cRH3ae33-fxSBhy&amp;controls=0"
+                        title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen
+                    ></iframe>
+                    <p class="text-sm font-bold">
+                        Statistics about the prevalence of Alzheimer's Disease
+                    </p>
+                </div>
+
+                <p>
+                    Nearly 7 million Americans are currently living with
+                    Alzheimer’s and approximately 33% of seniors die with
+                    Alzheimer’s or another form of Dementia.
+                </p>
+
+                <p>
+                    Unfortunately, I am all too familiar with just how
+                    devastating this disease can be. My father was diagnosed
+                    with Alzheimer’s in 2017, and passed away in 2022.
+                </p>
+
+                <div class="flex flex-col my-12 justify-center">
+                    <img src="styles\images\charity\pops.jpg" />
+                    <p class="text-sm font-bold -mt-4">Pops & me ('92)</p>
+                </div>
+
+                <p>
+                    That is why for my birthday I am asking you to join me in
+                    making a donation to help lead the fight against Alzheimer’s
+                    Disease.
+                </p>
+
+                <p>
+                    The Alzheimer's Association leads the way to end Alzheimer's
+                    and all other dementia — by accelerating global research,
+                    driving risk reduction and early detection, and maximizing
+                    quality care and support.
+                </p>
+
+                <!-- alzheimer's assoc. about video (YouTube) -->
+                <div class="my-12">
+                    <iframe
+                        class="w-full aspect-video"
+                        src="https://www.youtube.com/embed/8FRxGCXDGlY?si=YpJEGcULRCGGtgHy&amp;controls=0"
+                        title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen
+                    ></iframe>
+                    <p class="text-sm font-bold">
+                        You can learn more about the Alzheimer’s Association and
+                        their work at
+                        <a
+                            href="https://alz.org/about"
+                            class="font-bold text-[#d56014]"
+                            >alz.org/about</a
+                        >
+                    </p>
+                </div>
+
+                <p><a href="#">Back to top ↑</a></p>
+
+                <!-- Debug zone. Enable to dump data here to check out. -->
+                <!-- <h2>Debug Zone</h2> -->
+                <!-- <pre id="fetch-results"></pre> -->
+            </div>
+        </div>
+        <div class="flex-1 bg-gradient-to-r from-[#e69e08] to-[#d56014]"></div>
+
+        <!-- scripts go at the end of the body for faster page rendering -->
+
+        <!-- Twitch embeds (https://dev.twitch.tv/docs/embed/everything/) -->
+        <!-- Load the Twitch embed JavaScript file -->
+        <script src="https://embed.twitch.tv/embed/v1.js"></script>
+
+        <!-- Create a Twitch.Embed object that will render within the "twitch-embed" element -->
+        <script type="text/javascript">
+            new Twitch.Embed("twitch-embed", {
+                // height and width are a bit confusing to set, but both 100%
+                // seems to work well since we set the aspect ratio on the <div>
+                // that will contain it
+                width: "100%",
+                height: "100%",
+                channel: "schmidlak",
+                layout: "video", // no chat
+            });
+        </script>
+
+        <!-- Here we try to reach the streamlabs API to see if we can get your
+        donation goal progress manually. "module" b/c we use `await` -->
+        <script type="module">
+            try {
+                const url =
+                    "https://streamlabscharity.com/api/v1/users/campaigns/schmidlak/2025-birthday-stream-for-alzheimers-awareness-and-research";
+                const response = await fetch(url);
+                console.log("Fetch response:", response);
+                const data = await response.json();
+                // debug view in debug zone
+                // document.getElementById("fetch-results").textContent =
+                //     JSON.stringify(data, null, 4);
+                const raisedCents = data["amount_raised"];
+                // const raisedCents = 10000; // uncomment to try experimental value
+                const goalCents = data["goal"]["amount"]; // should be 90000 for $900
+                const donoProgressEl = document.getElementById("dono-progress");
+                donoProgressEl.setAttribute(
+                    "value",
+                    Math.min(100, (100 * raisedCents) / goalCents).toFixed(1)
+                );
+                const donoStatusEl = document.getElementById("dono-status");
+                donoStatusEl.textContent = "$" + (raisedCents / 100).toFixed(2);
+            } catch (error) {
+                console.error(
+                    "Error fetching and setting donation progress:",
+                    error
+                );
+            }
+        </script>
+
+        <!-- Stream progress bar element scripting-->
+        <script type="module">
+            // 1. Fixed time Nov 14 2025 11:30pm PST
+            const startTime = new Date("2025-11-14T23:30:00-08:00");
+            // 2. Fixed time Nov 15 2025 11:30pm PST (add 24 hours)
+            const endTime = new Date("2025-11-15T23:30:00-08:00");
+
+            function updateTime() {
+                // 3. Current time
+                const now = new Date();
+                const beforeStream = new Date("2025-11-14T23:00:00-08:00");
+                const duringStream = new Date("2025-11-14T23:30:00-08:00");
+                const afterStream = new Date("2025-11-15T23:30:00-08:00");
+                const currentTime = now; // pick different ones here to test
+
+                // Calculate progress (0-1)
+                const progress = Math.max(
+                    0,
+                    Math.min(
+                        1,
+                        (currentTime - startTime) / (endTime - startTime)
+                    )
+                );
+
+                // Scale to percentage (0-100)
+                const percentProgress = (progress * 100).toFixed(1);
+
+                // Boolean indicators
+                const hasntStartedYet = currentTime < startTime;
+                const hasEnded = currentTime > endTime;
+
+                // Human readable countdown string
+                let countdownString = "";
+                if (hasntStartedYet) {
+                    const diff = startTime - currentTime;
+                    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor(
+                        (diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+                    );
+                    const minutes = Math.floor(
+                        (diff % (1000 * 60 * 60)) / (1000 * 60)
+                    );
+                    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+                    const parts = [];
+                    if (days > 0) {
+                        parts.push(`${days} ${days > 1 ? "days" : "day"}`);
+                    }
+                    if (hours > 0) {
+                        parts.push(`${hours} ${hours > 1 ? "hours" : "hour"}`);
+                    }
+                    if (minutes > 0) {
+                        parts.push(
+                            `${minutes} ${minutes > 1 ? "minutes" : "minute"}`
+                        );
+                    }
+                    if (seconds > 0) {
+                        parts.push(
+                            `${seconds} ${seconds > 1 ? "seconds" : "second"}`
+                        );
+                    }
+
+                    countdownString = `Starts in ${parts.join(" ")}`;
+                    document.getElementById("time-status").textContent =
+                        countdownString;
+                }
+
+                // Current hour string (1-24)
+                if (!hasntStartedYet && !hasEnded) {
+                    let currentHourString = "";
+                    const hoursPassed = Math.ceil(progress * 24);
+                    currentHourString = `LIVE - Hour ${hoursPassed}/24`;
+                    document.getElementById("time-status").textContent =
+                        currentHourString;
+                }
+
+                if (hasEnded) {
+                    document.getElementById("time-status").textContent =
+                        "Thanks for tuning in!";
+                }
+
+                const donoEl = document.getElementById("time-progress");
+                donoEl.setAttribute("value", percentProgress);
+
+                // uncomment to debug
+                // console.log("Progress (0-1):", progress);
+                // console.log("Progress (0-100):", percentProgress);
+                // console.log("Hasn't started yet:", hasntStartedYet);
+                // console.log("Has ended:", hasEnded);
+            }
+
+            // call it once, then every second
+            updateTime();
+            setInterval(updateTime, 1000);
+        </script>
+    </body>
+</html>
