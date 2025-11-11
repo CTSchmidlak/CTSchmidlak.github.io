@@ -7,57 +7,210 @@
         <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
         <style>
             /* Container with animated stripes */
-            .striped-bg {
-                position: relative;
-                min-height: 100vh;
-                overflow: hidden;
-            }
-
-            .striped-bg::before {
-                content: "";
+            .barberpole {
                 position: absolute;
-                inset: 0;
-                z-index: -1;
-                background: repeating-linear-gradient(
-                    45deg,
-                    rgba(125, 211, 252, 0.15) 0,
-                    rgba(125, 211, 252, 0.15) 4px,
-                    rgba(125, 211, 252, 0.05) 4px,
-                    rgba(125, 211, 252, 0.05) 8px
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(
+                    -45deg,
+                    #e0f2fe 25%,
+                    #bae6fd 25%,
+                    #bae6fd 50%,
+                    #e0f2fe 50%,
+                    #e0f2fe 75%,
+                    #bae6fd 75%
                 );
-                background-size: 150% 150%;
-                animation: stripeMove 60s linear infinite; /* slow & subtle */
+                background-size: 24px 24px;
+                animation: barberpole 72s infinite linear; /* slowed down even more */
+                z-index: -1;
             }
 
-            @keyframes stripeMove {
-                0% {
+            @keyframes barberpole {
+                from {
                     background-position: 0 0;
                 }
-                100% {
+                to {
                     background-position: 100% 100%;
                 }
             }
+
+            /* Rainbow gradient animation */
+            .rainbow-gradient {
+                background: linear-gradient(
+                    90deg,
+                    red,
+                    orange,
+                    yellow,
+                    green,
+                    blue,
+                    indigo,
+                    violet,
+                    red
+                );
+                background-size: 400% 400%;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                animation: rainbow 4s linear infinite;
+            }
+
+            @keyframes rainbow {
+                0% {
+                    background-position: 0% 50%;
+                }
+                100% {
+                    background-position: 400% 50%;
+                }
+            }
+
+            .rainbow-button {
+                background: linear-gradient(
+                    270deg,
+                    red,
+                    orange,
+                    yellow,
+                    green,
+                    blue,
+                    indigo,
+                    violet,
+                    red
+                );
+                background-size: 400% 400%;
+                animation: rainbow 12s linear infinite;
+            }
+
+            /* Floating Animation */
+            @keyframes float {
+                0%,
+                100% {
+                    transform: translateY(15px) rotate(-10deg);
+                }
+                50% {
+                    transform: translateY(-15px) rotate(0deg);
+                }
+            }
+
+            .floating {
+                display: inline-block;
+                animation: float 5s infinite ease-in-out;
+            }
         </style>
     </head>
-    <body class="m-0 p-0">
+    <body class="barberpole">
         <div
-            class="striped-bg flex flex-col h-screen items-center justify-center p-2"
+            class="flex flex-col min-h-screen items-center justify-center p-2 pb-8"
         >
-            <div class="flex flex-col p-2 prose">
-                <h1>Welcome to CTSchmidlak.com</h1>
+            <!--Quincy head-->
+            <div
+                class="relative w-full flex items-center justify-center mb-6 overflow-hidden"
+            >
+                <div class="p-2 floating relative inline-block">
+                    <img src="assets/emote_quincy.png" alt="Quincy Emote" />
+
+                    <!--Quincy bark-->
+                    <div
+                        id="centerClick"
+                        class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+                        style="
+                            width: 40%;
+                            aspect-ratio: 1 / 1.5;
+                            cursor: pointer;
+                        "
+                    ></div>
+                </div>
             </div>
-            <div class="pb-6 prose">
-                <h3>This page is currently under construction!</h3>
-            </div>
-            <div class="p-2">
-                For birthday stream content:
-                <a
-                    href="birthday/2025.html"
-                    class="bg-red-500 hover:bg-red-600 text-white font-semibold py-1 px-2 rounded"
-                >
-                    click here
-                </a>
+
+            <audio id="clickSound">
+                <source src="audio/quincy_1.ogg" type="audio/mpeg" />
+            </audio>
+
+            <!--Text content-->
+            <div
+                class="bg-sky-100 rounded-xl p-6 m-6 shadow-lg flex flex-col items-center"
+            >
+                <div class="p-2 prose">
+                    <h1 class="text-blue-600">Welcome to CTSchmidlak.com</h1>
+                </div>
+                <div class="pb-6 prose">
+                    <h3>This website is currently under construction!</h3>
+                </div>
+                <div class="p-2">
+                    For birthday stream content:
+                    <a
+                        href="birthday/2025.html"
+                        class="bg-red-500 hover:bg-red-600 text-white font-semibold py-1 px-2 rounded"
+                    >
+                        click here
+                    </a>
+                </div>
             </div>
         </div>
+
+        <div class="flex flex-col items-center space-y-4">
+            <!-- Hidden audio element -->
+            <audio id="backgroundAudio" loop autoplay muted>
+                <source src="audio/date_undertale.mp3" type="audio/mpeg" />
+            </audio>
+
+            <!-- Floating Mute/Unmute Button -->
+            <button
+                id="muteBtn"
+                class="fixed bottom-6 right-6 bg-sky-500 hover:bg-blue-600 text-white font-semibold py-3 px-4 rounded-full shadow-lg flex items-center justify-center space-x-2 z-50 w-[170px]"
+            >
+                <span id="icon">🔇</span>
+                <span id="label">Not jammin'</span>
+            </button>
+        </div>
+
+        <!--Jammin' button, rainbow effect activate-->
+        <script>
+            const audio = document.getElementById("backgroundAudio");
+            const btn = document.getElementById("muteBtn");
+            const icon = document.getElementById("icon");
+            const label = document.getElementById("label");
+
+            btn.addEventListener("click", () => {
+                audio.muted = !audio.muted;
+                if (audio.muted) {
+                    icon.textContent = "🔇";
+                    label.textContent = "Not jammin'";
+                    // Remove rainbow effect
+                    btn.classList.remove("rainbow-button");
+                } else {
+                    icon.textContent = "🔊";
+                    label.textContent = "Jammin'";
+                    audio.play(); // ensure playback starts after user interaction
+                    // Add rainbow effect
+                    btn.classList.add("rainbow-button");
+                }
+            });
+        </script>
+
+        <!--Play Quincy Bark-->
+        <script>
+            const centerClick = document.getElementById("centerClick");
+            const clickSound = document.getElementById("clickSound");
+
+            // Array of audio sources
+            const audioSources = [
+                "audio/quincy_1.ogg",
+                "audio/quincy_2.ogg",
+                "audio/quincy_3.ogg",
+            ];
+
+            centerClick.addEventListener("click", () => {
+                // Select a random sound from the array
+                const randomSound =
+                    audioSources[
+                        Math.floor(Math.random() * audioSources.length)
+                    ];
+
+                // Set the audio source and play
+                clickSound.src = randomSound;
+                clickSound.currentTime = 0; // restart if already playing
+                clickSound.play();
+            });
+        </script>
     </body>
 </html>
