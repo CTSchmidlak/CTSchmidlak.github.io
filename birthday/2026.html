@@ -98,6 +98,9 @@
     .live-note{color:#b5cddd;margin:10px 0 16px;font-size:.88rem}
     .twitch-shell{border-radius:12px;overflow:hidden;background:#050e19;min-height:300px;position:relative;display:flex;align-items:center;justify-content:center;border:1px solid #4a89a6}
     .twitch-shell iframe{width:100%;height:100%;min-height:300px;display:block;border:0;aspect-ratio:16/9}
+    /* Use the same responsive Twitch SDK container as the working 2025 page. */
+    #twitch-embed{width:100%;height:300px;min-height:300px;min-width:0;flex:1 1 100%}
+    #twitch-embed[hidden]{display:none!important}
     .player-placeholder{padding:24px;text-align:center;color:var(--muted)}
     .player-placeholder strong{color:var(--ink);display:block;font-size:1.14rem;margin-bottom:7px}
     .player-placeholder a{color:var(--mint)}
@@ -474,7 +477,7 @@
 <section aria-labelledby="trailer-title" class="section wrap" hidden="" id="trailer-section"><p class="section-kicker">02 / The preview</p><h2 id="trailer-title">Watch the trailer.</h2><div class="trailer-container" id="trailer-container"></div></section>
 <section aria-label="Watch and donate" class="section wrap"><div class="section-head"><div><p class="section-kicker">02 / Come hang out</p><h2>Watch. Play. Give.</h2></div><p class="section-desc">Drop in for five minutes or all five hours—every visit, share, and donation helps.</p></div>
 <div class="two-col">
-<article aria-labelledby="watch-title" class="panel" id="watch"><p class="campaign-label">Twitch / schmidlak</p><h3 id="watch-title">The stream lives here.</h3><p class="live-note">The player below shows my Twitch channel on the live website. If I'm offline, check back during the scheduled session.</p><div class="twitch-shell" id="twitch-shell"><div class="player-placeholder" id="twitch-placeholder"><strong>Twitch player</strong><span>The player loads on the published HTTPS site.</span><br/><a href="https://www.twitch.tv/schmidlak" rel="noopener noreferrer" target="_blank">Watch directly on Twitch ↗</a></div></div><div class="stream-line"><p>Want chat and the full Twitch experience?</p><a href="https://www.twitch.tv/schmidlak" rel="noopener noreferrer" target="_blank">Open Twitch ↗</a></div></article>
+<article aria-labelledby="watch-title" class="panel" id="watch"><p class="campaign-label">Twitch / schmidlak</p><h3 id="watch-title">The stream lives here.</h3><p class="live-note">The player below shows my Twitch channel on the live website. If I'm offline, check back during the scheduled session.</p><div class="twitch-shell" id="twitch-shell"><div class="player-placeholder" id="twitch-placeholder"><strong>Twitch player</strong><span>If the embedded player is unavailable, you can still watch directly on Twitch.</span><br/><a href="https://www.twitch.tv/schmidlak" rel="noopener noreferrer" target="_blank">Watch directly on Twitch ↗</a></div></div><div class="stream-line"><p>Want chat and the full Twitch experience?</p><a href="https://www.twitch.tv/schmidlak" rel="noopener noreferrer" target="_blank">Open Twitch ↗</a></div></article>
 <article aria-labelledby="donate-title" class="panel" id="donate"><p class="campaign-label">The reason we're here</p><h3 id="donate-title">Let's make a difference.</h3><p>I'm raising money to help advance the fight against Alzheimer's through <strong id="charity-name">the Alzheimer's Association</strong>.</p><p class="tiny-label" style="color:var(--muted);margin:20px 0 3px">2026 fundraising goal</p><div class="goal" id="goal-amount">$1,000</div><p class="goal-caption">Every donation, large or small, means a lot.</p><div class="progress-area is-loading" id="progress-area"><div class="progress-numbers"><span id="raised-amount">Checking campaign total…</span><span id="progress-percent">Live goal</span></div><div aria-label="Donation goal progress" aria-valuemax="100" aria-valuemin="0" aria-valuenow="0" class="progress-track" id="progress-track" role="progressbar"><div class="progress-fill" id="progress-fill"></div></div><p class="progress-footnote" id="progress-note">The bar checks Streamlabs Charity for the latest total.</p></div><a class="button primary fundraiser-cta" href="https://streamlabscharity.com/@schmidlak/2026-birthday-charity-stream-for-alzheimers-research" id="donate-link" rel="noopener noreferrer" target="_blank">Donate through Streamlabs Charity ↗</a><p class="donation-short-url">Easy link to share: <a href="https://tinyurl.com/schmidlak36" rel="noopener noreferrer" target="_blank">tinyurl.com/schmidlak36 ↗</a></p><div hidden="" id="donate-pending"><span aria-disabled="true" class="button disabled fundraiser-cta">Donation page coming soon</span><p class="fundraiser-placeholder"><strong>Fundraiser setup in progress.</strong> I'll post the official 2026 donation link here once the campaign is published. In the meantime, please share the stream!</p></div><p class="secondary-info">Charity details: <a href="https://www.alz.org/about" id="charity-about" rel="noopener noreferrer" target="_blank">Learn about the Alzheimer's Association ↗</a><br/>Donations are handled by the charity fundraising platform, not by this website.</p></article>
 </div>
 </section>
@@ -622,34 +625,46 @@
     }
     updateSchedule();
     setInterval(updateSchedule, 30000);
-    // Twitch requires HTTPS, a matching parent domain, and a minimum
-    // 400px player width. Narrow screens get a direct Twitch link instead.
+    // Match the SDK-based, responsive player used by the working 2025 page.
+    // Do not block iPhones based on a 400px container-width check.
+    // Mobile visitors tap Play themselves; autoplay is disabled.
     function mountTwitchPlayer() {
       const shell = get("twitch-shell");
-      const meetsRequirements = location.protocol === "https:" && !!location.hostname && shell.clientWidth >= 400;
-      const existing = get("twitch-live-frame");
-      if (!meetsRequirements) {
-        if (existing) existing.remove();
-        get("twitch-placeholder").hidden = false;
-        return;
-      }
-      if (existing) return;
-      const src = new URL("https://player.twitch.tv/");
-      src.searchParams.set("channel", "schmidlak");
-      src.searchParams.set("parent", location.hostname);
-      src.searchParams.set("autoplay", "false");
-      const frame = document.createElement("iframe");
-      frame.id = "twitch-live-frame";
-      frame.src = src.href;
-      frame.title = "Schmidlak Twitch live video player";
-      frame.loading = "lazy";
-      frame.allow = "autoplay; fullscreen; picture-in-picture";
-      frame.allowFullscreen = true;
-      shell.append(frame);
-      get("twitch-placeholder").hidden = true;
+      const placeholder = get("twitch-placeholder");
+      // Twitch requires HTTPS and a valid embedding domain.
+      if (location.protocol !== "https:" || !location.hostname) return;
+      const holder = document.createElement("div");
+      holder.id = "twitch-embed";
+      holder.hidden = true;
+      shell.appendChild(holder);
+      const sdk = document.createElement("script");
+      sdk.src = "https://embed.twitch.tv/embed/v1.js";
+      sdk.async = true;
+      sdk.onload = () => {
+        if (!window.Twitch || !window.Twitch.Embed) return;
+        try {
+          holder.hidden = false;
+          placeholder.hidden = true;
+          new Twitch.Embed("twitch-embed", {
+            width: "100%",
+            height: "100%",
+            channel: "schmidlak",
+            layout: "video",
+            autoplay: false
+          });
+        } catch (error) {
+          holder.remove();
+          placeholder.hidden = false;
+          console.info("Twitch embed could not be initialized:", error);
+        }
+      };
+      sdk.onerror = () => {
+        holder.remove();
+        placeholder.hidden = false;
+      };
+      document.head.appendChild(sdk);
     }
     mountTwitchPlayer();
-    window.addEventListener("resize", mountTwitchPlayer);
     // Embed only when you add a trailer ID later.
     if (/^[A-Za-z0-9_-]{11}$/.test(CONFIG.trailerYouTubeId)) {
       const video = document.createElement("iframe");
